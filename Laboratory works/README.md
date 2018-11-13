@@ -1,9 +1,9 @@
                                Below you finding status of Laboratory works.
-> ####   L_1_1    (v1.0.1)
->        Status:  Update  🔧
-> ####   L_1_2    (v1.2.4)
->        Status:  Live 💚
-> ####   L_1_3    (v1.0.4)
->        Status:  Live 💚
-> ####   L_1_4    (v1.0.4)
->        Status:  Live 💚
+> ####  L_1
+>   Status: Ready (3/4)
+> ####  L_2
+>   Status: Laboratory work is not received => Contact with [developer](https://vk.com/id504509606)
+> ####  L_3
+>   Status: Laboratory work is not received => Contact with [developer](https://vk.com/id504509606)
+> ####  L_4
+>   Status: Laboratory work is not received => Contact with [developer](https://vk.com/id504509606)
