@@ -1,7 +1,4 @@
-            Welcome to this magical place my friend. Here you will find a lot of interesting.
-            
                                Below you finding status of Laboratory works.
-                               
 > ####   L_1_1    (v1.0.1)
 >        Status:  Update  🔧
 > ####   L_1_2    (v1.2.4)
