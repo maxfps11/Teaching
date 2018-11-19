@@ -42,6 +42,7 @@ int validation(struct string* s){
     case OCT:
         for(int i = 0; i < s->length; ++i){
             if (s->str[i] < '0' || s->str[i] > '7'){
+		printf("%d %s\n", s->basis, s->str);
                 printf("%s", msg_err_num);
                 return 1;
             }
@@ -50,6 +51,7 @@ int validation(struct string* s){
     case DEC:
         for(int i = 0; i < s->length; ++i){
             if(s->str[i] < '0' || s->str[i] > '9'){
+		printf("%d %s\n", s->basis, s->str);
                 printf("%s", msg_err_num);
                 return 1;
             }
@@ -59,6 +61,7 @@ int validation(struct string* s){
         for(int i = 0; i < s->length; ++i){
             if(s->str[i] < '0' || (s->str[i] > '9' && s->str[i] < 'A') || s->str[i] > 'F'){
                 if(s->str[i] < '0' || (s->str[i] > '9' && s->str[i] < 'a') || s->str[i] > 'f'){
+		    printf("%d %s\n", s->basis, s->str);
                     printf("%s", msg_err_num);
                     return 1;
                 }
@@ -66,6 +69,7 @@ int validation(struct string* s){
         }
         return s->basis;
     default:
+	printf("%d %s\n", s->basis, s->str);
         printf("%s", msg_err_bas);
         return 1;
     }
