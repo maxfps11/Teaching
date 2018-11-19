@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int validation(int);
-int* create_array(int, int*);
+int* create_array(int, int*, int*);
 
 int main(){
     int N = 0;
@@ -11,8 +11,9 @@ int main(){
     if(validation(N)) return 1;
 
     int arr[N];
+    int array_sum[N / 2];
 
-    int* parr = create_array(N, arr);
+    int* parr = create_array(N, arr, array_sum);
 
     printf("%d\n", N);
     for(int i = 0; i < N / 2; ++i){
@@ -22,8 +23,8 @@ int main(){
     return 0;
 }
 
-int* create_array(int N, int* arr){
-    int array_sum[N / 2];
+int* create_array(int N, int* arr, int* array_sum){
+
 
     for(int i = 0; i < N; ++i){
         arr[i] = 0;
