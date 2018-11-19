@@ -1,71 +1,65 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int validation(int);
-int* create_array(int, int*, int*);
+int* create_array(int);
 
 int main(){
-    int N = 0;
+    int* pInt = calloc(1, 4);
 
-    scanf("%d", &N);
+    scanf("%d", &pInt[0]);
 
-    if(validation(N)) return 1;
+    if(validation(pInt[0]))
+        return 1;
 
-    int arr[N];
-    int array_sum[N / 2];
-
-    int* parr = create_array(N, arr, array_sum);
-
-    printf("%d\n", N);
-    for(int i = 0; i < N / 2; ++i){
-        printf("%5d", parr[i]);
+    for(int i = 0, j = pInt[0]; i < j / 2; ++i){
+        if(i == 0){
+            free(pInt);
+            pInt = create_array(j);
+        }
+        printf("%5d", pInt[i]);
     }
 
+    free(pInt);
     return 0;
 }
 
-int* create_array(int N, int* arr, int* array_sum){
+int* create_array(int val){
+    int* pInt = calloc((size_t)(val), 4);
+    int* pInt1 = calloc((size_t)(val / 2), 4);
 
+    printf("%d\n", val);
 
-    for(int i = 0; i < N; ++i){
-        arr[i] = 0;
-    }
-
-    for(int i = 0; i < N / 2; ++i){
-        array_sum[i] = 0;
-    }
-
-    for(int i = 0, j = 1; i < N / 2; ++i, ++j){
+    for(int i = 0, j = 1; i < val / 2; ++i, ++j){
         if(j % 2 == 1){
-            arr[i] = j;
+            pInt[i] = j;
             --i;
         }
     }
 
-    for(int i = 0, j = 1; i < (N / 2) + 1; ++i, ++j){
+    for(int i = 0, j = 1; i < (val / 2) + 1; ++i, ++j){
         if(j % 2 == 0){
-            arr[N - i] = j;
+            pInt[val - i] = j;
             --i;
         }
     }
 
-    for(int i = 0; i < N / 2; ++i){
-        array_sum[i] += arr[i];
+    for(int i = 0; i < val / 2; ++i){
+        pInt1[i] += pInt[i];
+        pInt1[i] += pInt[(val - 1) - i];
     }
 
-    for(int i = 0; i < N / 2; ++i){
-        array_sum[i] += arr[(N - 1) - i];
-    }
-
-    return array_sum;
+    free(pInt);
+    return pInt1;
 }
 
-int validation(int N){
-    if(N < 2 || N > 150){
-        printf("%d\nNumber is wrong.", N);
+int validation(int val){
+    if(val < 2 || val > 150){
+        printf("%d\nNumber is wrong.", val);
         return 1;
     }
-    else if(N % 2 != 0){
-        printf("%d\nNumber is uneven.", N);
+    else if(val % 2 != 0){
+        printf("%d\nNumber is uneven.", val);
         return 1;
     }
     return 0;
