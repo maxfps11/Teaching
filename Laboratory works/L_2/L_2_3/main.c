@@ -5,7 +5,7 @@ int validation(int);
 int* create_array(int);
 
 int main(){
-    int* pInt = calloc(1, 4);
+    int* pInt = calloc(1, sizeof(int));
 
     scanf("%d", &pInt[0]);
 
@@ -25,8 +25,8 @@ int main(){
 }
 
 int* create_array(int val){
-    int* pInt = calloc((size_t)(val), 4);
-    int* pInt1 = calloc((size_t)(val / 2), 4);
+    int* pInt = calloc((size_t)(val), sizeof(int));
+    int* pInt1 = calloc((size_t)(val / 2), sizeof(int));
 
     printf("%d\n", val);
 
