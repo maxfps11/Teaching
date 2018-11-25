@@ -1,21 +1,26 @@
 #include <stdio.h>
 
+#define MAX 100
+
 int main(){
-    const int MAX = 100;
-    char prev[MAX] = {0};
-    char after[MAX] = {0};
+    char arr[MAX];
 
-    scanf("%s", prev);
+    for(int i = 0; i < MAX; ++i)
+        arr[i] = NULL;
 
-    for(int i = 0, j = 0; prev[i] != '\0' ; ++i){
-        if(prev[i] >= '0' && prev[i] <= '9'){
-            after[j] = prev[i];
-            j++;
-        }
+    scanf("%s", arr);
+
+    printf("Before: %s\n", arr);
+
+    for(int i = 0; arr[i]; ++i){
+        if(arr[i] < '0' || arr[i] > '9')
+            arr[i] = '\0';
     }
 
-    printf("Before: %s\n", prev);
-    printf("After: %s", after);
+    printf("After: ");
+    for(int i = 0; i < MAX; ++i){
+        if(arr[i] != '\0') printf("%c", arr[i]);
+    }
 
     return 0;
 }
