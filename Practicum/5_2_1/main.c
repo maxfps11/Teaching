@@ -19,7 +19,8 @@ int main(){
 
     printf("After: ");
     for(int i = 0; i < MAX; ++i){
-        if(arr[i] != '\0') printf("%c", arr[i]);
+        if(arr[i] != '\0')
+            printf("%c", arr[i]);
     }
 
     return 0;
