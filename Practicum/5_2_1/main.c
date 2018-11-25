@@ -6,7 +6,7 @@ int main(){
     char arr[MAX];
 
     for(int i = 0; i < MAX; ++i)
-        arr[i] = NULL;
+        arr[i] = 0;
 
     scanf("%s", arr);
 
