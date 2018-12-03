@@ -18,6 +18,19 @@ int from_dec(struct string*);
 int from_hex(struct string*);
 int power(int, int);
 
+int in_dec(struct string* str){
+    int sum = 0;
+    for(int i = str->length - 1, j = 0; i >= j; i--){
+        if(str->str[i] >= 'A' && str->str[i] <= 'F')
+            sum += ((int) str->str[i] - 55) * power(str->basis, str->length - (i + 1));
+        else if(str->str[i] >= 'a' && str->str[i] <= 'f')
+            sum += ((int) str->str[i] - 87) * power(str->basis, str->length - (i + 1));
+        else
+            sum += ((int) str->str[i] - '0') * power(str->basis, str->length - (i + 1));
+    }
+    return sum;
+}
+
 int main(){
     struct string *s = get_str();
     return print_str(s);
@@ -83,15 +96,9 @@ int power(int n, int rate){
 }
 
 int from_bin(struct string* s){
-    int val = 0;
+    int val = in_dec(s);
     int count = 0;
     int rest = 0;
-
-    for(int i = 0; i < s->length; ++i){
-        for(int j = '0', k = 0; j < ':'; ++j, ++k)
-            if((int) s->str[i] == j)
-                val += k * power(s->basis, s->length - (i + 1));
-    }
 
     for(int i = 0; val > 0; ++i, ++count){
         rest = val % OCT;
@@ -104,15 +111,9 @@ int from_bin(struct string* s){
 }
 
 int from_dec(struct string* s){
-    int val = 0;
+    int val = in_dec(s);
     int count = 0;
     int rest = 0;
-
-    for(int i = 0; i < s->length; ++i){
-        for(int j = '0', k = 0; j < ':'; ++j, ++k)
-            if((int) s->str[i] == j)
-                val += k * power(s->basis, s->length - (i + 1));
-    }
 
     for(int i = 0; val > 0; ++i, ++count){
         rest = val % OCT;
@@ -125,21 +126,9 @@ int from_dec(struct string* s){
 }
 
 int from_hex(struct string* s){
-    int val = 0;
+    int val = in_dec(s);
     int count = 0;
     int rest = 0;
-
-    for(int i = 0; i < s->length; ++i){
-        for(int j = '0', k = 0; j < ':'; ++j, ++k)
-            if((int) s->str[i] == j)
-                val += k * power(s->basis, s->length - (i + 1));
-        for(int j = 'A', k = 10; j < 'G'; ++j, ++k)
-            if((int) s->str[i] == j)
-                val += k * power(s->basis, s->length - (i + 1));
-        for(int j = 'a', k = 10; j < 'g'; ++j, ++k)
-            if((int) s->str[i] == j)
-                val += k * power(s->basis, s->length - (i + 1));
-    }
 
     for(int i = 0; val > 0; ++i, ++count){
         rest = val % OCT;
