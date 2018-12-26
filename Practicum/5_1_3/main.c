@@ -1,21 +1,18 @@
 #include <stdio.h>
 
-int main() {
-
-    const short MAX = 10;
-    int arr[MAX] = {0};
-    int *pInt = NULL;
+int main()
+{
+    int arr[10];
+    int* pInt = 0;
     int sum = 0;
 
-    for (int i = 0; i < MAX; ++i) {
+    for(int i = 0; i < 10; ++i)
         scanf("%d", &arr[i]);
-    }
 
     pInt = arr;
 
-    for (int i = 0; i < MAX; ++i) {
-        sum += *(pInt + i);
-    }
+    for(int i = 0; i < 10; ++i)
+        sum += *pInt++;
 
     printf("sum: %d", sum);
 

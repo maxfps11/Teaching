@@ -1,18 +1,23 @@
 #include <stdio.h>
 
-int main() {
+char* create_and_clear()
+{
+    static char string[101];
+    char* pstring = string;
+    while(*pstring++ != '\0') *pstring = 0;
+    return pstring;
+}
 
-    const short MAX = 101;
-
-    char str[MAX] = { 0 };
-
-    short count = 0;
+int main()
+{
+    char* str = create_and_clear();
+    unsigned int count = 0;
 
     scanf("%s", str);
 
-    for (int i = 0; i < MAX; ++i) if(str[i] != 0) count++;
+    while(str[count]) count++;
 
-    printf("\nLength: %d", count);
+    printf("Length: %d", count);
 
     return 0;
 }
