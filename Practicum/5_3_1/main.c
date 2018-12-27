@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int** add(int n, int m, int A[][m], int B[][m], int C[][m]);
+
 int main()
 {
     int n = 0;
@@ -27,16 +29,27 @@ int main()
         }
     }
 
+    add(n, m, matrix_A, matrix_B, matrix_C);
+
     for(int i = 0; i < n; ++i)
     {
         for(int j = 0; j < m; ++j)
         {
-            matrix_C[i][j] = matrix_A[i][j] + matrix_B[i][j];
             printf("%5d", matrix_C[i][j]);
         }
+
         if(i != n - 1)
             printf("\n");
     }
 
     return 0;
+}
+
+int** add(int n, int m, int A[][m], int B[][m], int C[][m])
+{
+    for(int i = 0; i < n; ++i)
+        for(int j = 0; j < m; ++j)
+            C[i][j] = A[i][j] + B[i][j];
+
+    return (int**) C[0][0];
 }
