@@ -28,16 +28,17 @@ int main() {
     }
 
     int save_1 = 0;
+
     for (int i = 0; i < m ; ++i)
     {
-        save_1 = pInt[n - 1];
+        save_1 = pInt[0];
 
         for(int j = 0; j < n - 1; ++j)
         {
-            pInt[j + 1] = pInt1[j];
+            pInt[j] = pInt1[j + 1];
         }
 
-        pInt[0] = save_1;
+        pInt[n - 1] = save_1;
 
         for(int k = 0; k < n; ++k)
         {
